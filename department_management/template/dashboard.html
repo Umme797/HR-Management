@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+
+<div class="container-fluid mt-5">
+
+
+    <div class="row">
+
+
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <h5>Side menu Bar</h5>
+            <p>Side menus can be listed to this side</p>
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="col-md-9">
+            
+            <!-- Create Department Button -->
+            <div class="mb-3 ">
+
+                <button class="btn btn-success">
+                    <a href="/create_department" class="text-white text-decoration-none">
+                        Create Department
+                    </a>
+                </button>
+            
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Department Name</th>
+                        <th>Description</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for d in departments %}
+
+                    <tr>
+
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ d.name }}</td>
+                        <td>{{ d.description }}</td>
+
+                        <td>
+                            <button class="btn btn-warning btn-sm">
+                                <a href="/update_department/{{ d.id }}" class="text-white text-decoration-none">Edit</a>
+                            </button>
+                        </td>
+                        
+
+                        <td>
+
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <a href="/delete_department/{{ d.id }}" class="text-white text-decoration-none">
+                                    Delete
+                                </a>
+                            </button>  
+
+                        </td>                        
+                        
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+            
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock 'main' %}
